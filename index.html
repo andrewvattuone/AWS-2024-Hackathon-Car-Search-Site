@@ -1,50 +1,8 @@
 <!DOCTYPE html>
 <html> 
     <head>
-    <link rel="stylesheet" href="style.css">
-    >
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        p1 {
-            font-size: 25px;
-        }
-        #Gas {
-            height: 25px;
-            width: 25px;
-        }
-        #Electric {
-            height: 25px;
-            width: 25px;
-        }
-        #Hybrid {
-            height: 25px;
-            width: 25px;
-        }
-        #Red {
-            height: 25px;
-            width: 25px;
-        }
-        #Black {
-            height: 25px;
-            width: 25px;
-        }
-        #White {
-            height: 25px;
-            width: 25px;
-        }
-        #Grey {
-            height: 25px;
-            width: 25px;
-        }
-        #Brown {
-            height: 25px;
-            width: 25px;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     </head>
     <body>
         <h1 style="text-align: center">Car Suggest</h1>
@@ -52,107 +10,93 @@
         <marquee>🚗 🚚 🚙 🏎️ 🛻 🚐 🚛</marquee>
 
         <div class="background">
-         <br>
-        <p1 class="text">Minimum Price: </p1>
-        <p1 class="value">$</p1>
-        <p1 class="value" id="minprice">90000</p1><br>
+        <br>
+            <div class="container">
+            <p1 class="text">Minimum Price:&nbsp;$<span id="minprice">30000</span></p1>
+            </div>
+            <div class="container">
+            <input id="min" type="range" min="5000" max="120000" value="30000" oninput="minprice.innerText = this.value">
+            </div>
+        <br>
 
-        <input id="min" type="range" min="17000" max="200000" value="90000" oninput="minprice.innerText = this.value">
+        <div class="container">
+            <p1 class="text">Maximum Price:&nbsp;$<span id="maxprice">30000</span> </p1>
+            </div>
+            <div class="container">
+            <input id="max" type="range" min="5000" max="120000" value="30000" oninput="maxprice.innerText = this.value">
+            <br>
+            </div>
+            <br>
+        </div>
+        <br><br>
+        
+        <marquee direction="right"><span class="reverse">🚗 🚚 🚙 🏎️ 🛻 🚐 🚛</span><br></marquee>
+
+        <div class="background">
+        <br>
+        <div class="container">
+        <p1 class="text">Miles Per Gallon:&nbsp;<span id="miles">30</span></p1>
+        </div>
+        
+        <div class="container">
+        <input id="mpg"type="range" min="24" max="100" value="32" oninput="miles.innerText = this.value">
+        </div>
+        <br>
+        </div>
         <br><br>
 
-        <p1 class="text">Maximum Price: </p1>
-        <p1 class="value">$</p1>
-        <p1 class="value" id="maxprice">90000</p1><br>
+        <marquee>🚗 🚚 🚙 🏎️ 🛻 🚐 🚛</marquee>
         
-        <input id="max" type="range" min="17000" max="200000" value="90000" oninput="maxprice.innerText = this.value">
+        <div class="background">
         <br>
+        <div class="container">
+        <p1 class="text" id="Type">Fuel Type</p1>
         </div>
+        <br>
+        <div class="container">
+            <input  type="checkbox" id="Gas" name="Gas" value="Gas">
+            <label class="value" for="Gas"> Gas</label>
+            <input type="checkbox" id="Electric" name="Electric" value="Electric">
+            <label class="value" for="Electric"> Electric</label>
+            <input type="checkbox" id="Hybrid" name="Hybrid" value="Hybrid">
+            <label class="value" for="Hybrid"> Hybrid</label>
+        </div>
+        <br>
 
-        <br><br><br>
-        
+        </div>
+        <br><br>
 
-        <div class="background">
-        <br>
-        <p1 class="text">Miles Per Gallon:</p1>
-        <p1 class="value" id="miles">80</p1><br>
-        <input id="mpg"type="range" min="24" max="141" value="80" oninput="miles.innerText = this.value">
-        <br>
-        </div>
-        <br><br><br>
+        <marquee direction="right"><span class="reverse">🚗 🚚 🚙 🏎️ 🛻 🚐 🚛</span><br></marquee>
         
         <div class="background">
         <br>
-        <p1 class="text" id="Type">Fuel Type</p1><br>
-        <input  type="checkbox" id="Gas" name="Gas" value="Gas">
-        <label class="value" for="Gas"> Gas</label><br>
-        <input type="checkbox" id="Electric" name="Electric" value="Electric">
-        <label class="value" for="Electric"> Electric</label><br>
-        <input type="checkbox" id="Hybrid" name="Hybrid" value="Hybrid">
-        <label class="value" for="Hybrid"> Hybrid</label><br>
+        <div class="container">
+            <p1 class="text">Colors:</p1>
         </div>
         <br>
-        <br>
+        <div class="container">
+            <input type="checkbox" id="Red" name="Red" value="Red">
+            <label class="value" for="Red"> Red</label>
+            <input type="checkbox" id="Black" name="Black" value="Black">
+            <label class="value" for="Black"> Black</label>
+            <input type="checkbox" id="White" name="White" value="White">
+            <label class="value" for="White"> White</label>
+            <input type="checkbox" id="Grey" name="Grey" value="Grey">
+            <label class="value" for="Grey"> Gray</label>
+            <input type="checkbox" id="Brown" name="Brown" value="Brown">
+            <label class="value" for="Brown"> Brown</label>
         </div>
-        <br><br><br>
-        
-        <div class="background">
         <br>
-        <p1 class="text">Color(s):</p1><br>
-        <input type="checkbox" id="Red" name="Red" value="Red">
-        <label class="value" for="Red"> Red</label><br>
-        <input type="checkbox" id="Black" name="Black" value="Black">
-        <label class="value" for="Black"> Black</label><br>
-        <input type="checkbox" id="White" name="White" value="White">
-        <label class="value" for="White"> White</label><br>
-        <input type="checkbox" id="Grey" name="Grey" value="Grey">
-        <label class="value" for="Grey"> Grey</label><br>
-        <input type="checkbox" id="Brown" name="Brown" value="Brown">
-        <label class="value" for="Brown"> Brown</label><br><br>
         </div>
         <br><br><br>
 
         <div class="background">
         <br>
-        <p1 class="text">Brand</p1><br>
-        <style>
-            .dropbtn {
-                background-color:rgb(193, 214, 205);
-                color: black;
-                padding: 16px;
-                width:150%;
-                font-size: 16px;
-                border: none;
-                cursor: pointer;
-            }
-            .dropbtn:hover, .dropbtn:focus{
-                background-color: rgb(193, 214, 205);
-            }
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-            .dropdown-content {
-                display: none;
-                position: absolute;
-                background-color: rgb(193, 214, 205);
-                min-width: 160px;
-                box-shadow: 0px 8px 16px 0px rgba(0,0,0,2);
-                z-index: 1;
-            }
-            .dropdown-content a {
-                color: black;
-                padding: 12px 16px;
-                text-decoration: none;
-                display: block;
-            }
-            .dropdown-content a:hover {background-color: rgb(103, 168, 140);}
-
-            .dropdown:hover .dropdown-content{display: block;}
-
-            .dropdown:hover .dropbtn {background-color: rgb(103, 168, 140);}
-
-            .show {display: block;}
-        </style>
+            <div class="container">
+            <p1 class="text">Brand</p1>
+            </div>
+        <br>
+        <div class="container">
         <div class="dropdown">
             <button id="dropdownButton" onclick="myfunction()" class="dropbtn" style="color: rgb(113, 21, 0)">select</button>
             <div id="myDropdown" class="dropdown-content">
@@ -182,16 +126,20 @@
                 <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Toyota')">Toyota</a>
                 <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Volkswagen')">Volkswagen</a>
             </div>
+            </div>
         </div>
         <br>
         </div>
         
         <br><br><br>
        
-        
-            <button id="nextButton">Submit</button>
-        <h1>Showing Top 10 Results</h1>
-        <br><br><br>
+        <div class="container">
+        <button id="nextButton">Submit</button>
+        </div>
+        <div class="container">
+        <h1>Our Top 10 Picks</h1>
+        </div>
+        <br>
 
        
         <table class="background">
@@ -230,7 +178,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="2">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >2</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -247,7 +195,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="3">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >3</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -264,7 +212,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="4">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >4</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -281,7 +229,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="5">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >5</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -298,7 +246,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="6">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >6</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -315,7 +263,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="7">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >7</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -332,7 +280,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="8">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >8</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -349,7 +297,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="9">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >9</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -366,7 +314,7 @@
                 <th class="mileage value">NA</th>
             </tr>
             <tr class="carRow" data-car-number="10">
-                <th class="carNumber value" >1</th>
+                <th class="carNumber value" >10</th>
                 <th class="year value">NA</th>
                 <th class="make value">NA</th>
                 <th class="model value">NA</th>
@@ -382,7 +330,7 @@
                 <th class="fuel value">NA</th>
                 <th class="mileage value">NA</th>
             </tr>
-        </table>s
+        </table>
    
         <br><br><br>
         <div class="background">
@@ -390,20 +338,6 @@
             *NOTE: NA means there was no more applicable cars that meets your specifications
         </p1>><br>
     </div><br><br>
-        <script>
-        function selectOption(option) {
-            const dropdownButton = document.getElementById("dropdownButton");
-            dropdownButton.textContent = option; // Update the button text to selected option
-            document.getElementById("myDropdown").classList.remove("show"); // Close dropdown after selection
-        }
-
-        // Function to show the dropdown menu
-            function myfunction() {
-            const dropdownContent = document.getElementById("myDropdown");
-            dropdownContent.classList.toggle("show"); // Toggle visibility of dropdown
-        }
-    
-
-        </script>
         <script type="text/javascript" src="script.js"></script>
     </body>
+</html>
