@@ -94,13 +94,13 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     }
 }
 
-let minprice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
+let minPrice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
 let colors, fuelTypes = [];
 
 function generateValues(event) {
     console.log("Hello");
     event.preventDefault()
-    minprice = document.getElementById("min").value;
+    minPrice = document.getElementById('minPrice').value;
     maxprice = document.getElementById("max").value;
     if(minprice > maxprice)
     {

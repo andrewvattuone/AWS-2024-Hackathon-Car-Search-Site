@@ -53,6 +53,13 @@
 
         <div class="background">
          <br>
+
+        <div>
+            <label for="minPrice">Min Price: </label>
+            <input type="range" id="minPrice" min="0" max="100000" step="1000" value="0" oninput="updatePriceRange()">
+            <span id="minPriceValue">150000</span>
+        </div>
+
         <p1 class="text">Minimum Price: </p1>
         <p1 class="value">$</p1>
         <p1 class="value" id="minprice">90000</p1><br>
