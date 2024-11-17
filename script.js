@@ -94,6 +94,61 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     }
 }
 
+
+function generateValues(event) {
+    console.log("Hello");
+    event.preventDefault()
+    minprice = document.getElementById("min").value;
+    maxprice = document.getElementById("max").value;
+    if(minprice > maxprice)
+    {
+        minprice = maxprice;
+    }
+    if(maxprice < minprice)
+    {
+        maxprice = minprice;
+    }
+    mpg = document.getElementById("mpg").value;
+    electric = document.getElementById("Electric").checked;
+    gas = document.getElementById("Gas").checked;
+    hybrid = document.getElementById("Hybrid").checked;
+    brand = document.getElementById("dropdownButton").textContent;
+    red = document.getElementById("Red").checked;
+    black = document.getElementById("Black").checked;
+    white = document.getElementById("White").checked;
+    grey = document.getElementById("Grey").checked;
+    brown = document.getElementById("Brown").checked;
+    if(electric||gas||hybrid)
+    {
+        if(electric)
+            fuelTypes.push("Electric");
+        if(gas)
+            fuelTypes.push("Gas");
+        if(hybrid)
+            fuelTypes.push("Hybrid");
+    }
+    if(red||black||white||grey||brown)
+    {
+        if(red)
+            colors.push("Red");
+        if(black)
+            colors.push("Black");
+        if(white)
+            colors.push("White");
+        if(grey)
+            colors.push("Gray");
+        if(brown)
+            colors.push("Brown");
+    }
+} 
+
+console.log(minprice);
+console.log(maxprice);
+console.log(mpg);
+console.log(colors);
+console.log(fuelTypes);
+console.log(brand);
+
 // function displayCarInfo(cars) {
 //     const carInfoDiv = document.getElementById('carInfo');
 //     carInfoDiv.innerHTML = '';
