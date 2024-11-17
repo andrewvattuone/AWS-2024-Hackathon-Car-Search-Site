@@ -1,0 +1,72 @@
+.background{
+    background-color: rgba(242, 240, 196,.95);
+    border-radius: 5px;
+ }
+ 
+ .text{
+     color: rgb(120, 3, 68);
+ }
+ 
+ .value{
+     color: rgb(113, 21, 0);
+ }
+ 
+ h1 {
+     font-size: 50px;
+     background-color:rgba(129, 7, 205, .8);
+     color:white;
+     overflow: hidden;
+     display: block;
+     padding: 20px 16px;
+ }
+ 
+ button {
+     background-color: rgba(129, 7, 205, .9);
+     color: white;
+     border: none;
+     padding: 12px 25px;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 25px;
+     width: 50%;
+     transition: #a5c9e2;
+     font-family: "Oswald", sans-serif;
+       font-optical-sizing: auto;
+       font-weight: 500;
+       font-style: bold;
+   }
+ 
+ 
+ body{
+           
+     min-height: 100vh;
+     font-size: calc(10px + 2vmin);
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-optical-sizing: auto;
+     font-weight: 500;
+     font-style: bold;
+     height:100%;
+     overflow-x: hidden !important;
+     background-image: url('invert.jpg');
+     
+     
+   }
+ 
+   .myDropdown{
+       
+     width: 10%;
+ 
+   }
+ 
+   input{
+     border: none;
+     padding: 12px 25px;
+     border-radius: 5px;
+     width: 50%;
+     font-size: 25px;
+     color: rgb(47, 15, 8);
+   }
+ 
+   label{
+     padding-left:1%;
+   }
