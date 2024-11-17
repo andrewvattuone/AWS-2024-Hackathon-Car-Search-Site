@@ -36,11 +36,11 @@ function parseCSV(csvData) {
 
 function findCars(cars, minprice, maxprice, mpg, brand, colors, fuelTypes) {
     let correctCars = [];
-    for(let car = 0; car < cars.length; car++)
+    for(let i = 0; i < cars.length; i++)
     {
-        if(carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes))
+        if(carMatches(cars[i], minprice, maxprice, mpg, brand, colors, fuelTypes))
         {
-            correctCars.push(car);
+            correctCars.push(cars[i]);
         }
     }
 
@@ -106,6 +106,8 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
 //         carInfoDiv.innerHTML += `<div>${carDetails}</div><hr>`;
 //     });
 // }
+
+// fetchCarData();
 
 // Call the fetchCarData function when the page is loaded
 window.onload = function() {
