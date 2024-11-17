@@ -1,3 +1,41 @@
+async function fetchCarData() {
+    const url = 'https://raw.githubusercontent.com/username/repository-name/main/data/cars.csv';
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Failed to fetch the CSV file');
+        }
+        const csvData = await response.text();
+        const cars = parseCSV(csvData);
+        displayCarInfo(cars);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// Function to parse the CSV data into an array of car objects
+function parseCSV(csvData) {
+    const rows = csvData.split('\n');
+    const headers = rows[0].split(',');  // Assuming first row contains headers
+    const cars = [];
+    
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].split(',');
+        if (row.length === headers.length) {
+            let car = {};
+            for (let j = 0; j < headers.length; j++) {
+                car[headers[j].trim()] = row[j].trim();
+            }
+            cars.push(car);
+        }
+    }
+    
+    return cars;
+}
+
+
+
 const excelUrl = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/main/filtereddata.xlsx';
 
 // const XLSX = require("xlsx");
