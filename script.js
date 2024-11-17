@@ -1,4 +1,4 @@
-const excelFilePath = "filtereddata.xlsx";
+const excelUrl = 'https://your-username.github.io/your-repo/assets/filtereddata.xlsx';
 
 // const XLSX = require("xlsx");
 // const fs = require("fs");
@@ -27,7 +27,7 @@ submitButton.addEventListener("click", generateValues);
 
 let excelData;
 
-fetch("filtereddata.xlsx")
+fetch(excelUrl)
   .then((response) => response.arrayBuffer())
   .then((data) => {
     // Read the Excel file
