@@ -40,11 +40,12 @@ fetch(excelUrl)
     console.log("Excel Data:", excelData);
 
     // Process the form inputs
-    setupFormHandlers(excelData);
-  })
+  });
 
 let minprice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
 let colors, fuelTypes = [];
+
+console.log(excelData[1]);
 
 function generateValues(event) {
     console.log("Hello");
