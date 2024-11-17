@@ -1,4 +1,4 @@
-const excelUrl = 'https://your-username.github.io/your-repo/assets/filtereddata.xlsx';
+const excelUrl = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/main/filtereddata.xlsx';
 
 // const XLSX = require("xlsx");
 // const fs = require("fs");
