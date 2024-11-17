@@ -8,7 +8,7 @@ async function fetchCarData() {
         }
         const csvData = await response.text();
         const cars = parseCSV(csvData);
-        displayCarInfo(cars);
+        console.log(cars);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -34,18 +34,18 @@ function parseCSV(csvData) {
     return cars;
 }
 
-function displayCarInfo(cars) {
-    const carInfoDiv = document.getElementById('carInfo');
-    carInfoDiv.innerHTML = '';
+// function displayCarInfo(cars) {
+//     const carInfoDiv = document.getElementById('carInfo');
+//     carInfoDiv.innerHTML = '';
     
-    cars.forEach(car => {
-        let carDetails = '';
-        for (const key in car) {
-            carDetails += `<p><strong>${key}:</strong> ${car[key]}</p>`;
-        }
-        carInfoDiv.innerHTML += `<div>${carDetails}</div><hr>`;
-    });
-}
+//     cars.forEach(car => {
+//         let carDetails = '';
+//         for (const key in car) {
+//             carDetails += `<p><strong>${key}:</strong> ${car[key]}</p>`;
+//         }
+//         carInfoDiv.innerHTML += `<div>${carDetails}</div><hr>`;
+//     });
+// }
 
 // Call the fetchCarData function when the page is loaded
 window.onload = function() {
