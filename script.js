@@ -94,6 +94,8 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     }
 }
 
+let minprice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
+let colors, fuelTypes = [];
 
 function generateValues(event) {
     console.log("Hello");
