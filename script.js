@@ -1,5 +1,5 @@
-async function fetchCarData() {
-    const url = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/refs/heads/main/filtereddata5.csv';
+async function fetchCarData(minprice, maxprice, mpg, brand, colors, fuelTypes) {
+    const url = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/refs/heads/main/filteredcardata.csv';
     
     try {
         const response = await fetch(url);
@@ -8,7 +8,9 @@ async function fetchCarData() {
         }
         const csvData = await response.text();
         const cars = parseCSV(csvData);
-        console.log(findCars(cars, 19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));
+        const filteredCars = findCars(cars, minprice, maxprice, mpg, brand, colors, fuelTypes);
+        console.log(filteredCars);
+        updateTable(cars);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -83,9 +85,8 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
         }
     }
 
-    if(car.Price >= minprice && car.Price <= maxprice && car.MinMPG >= mpg && car.Make == brand && containsColor && correctFuelType)
+    if(Number(car.Price) >= minprice && Number(car.Price) <= maxprice && Number(car.MinMPG) >= mpg && car.Make == brand && containsColor && correctFuelType)
     {
-        console.log("started1");
         return true;
     }
     else
@@ -94,162 +95,68 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     }
 }
 
-let minPrice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
-let colors, fuelTypes = [];
-
-function generateValues(event) {
-    console.log("Hello");
-    event.preventDefault()
-    minPrice = document.getElementById('minPrice').value;
-    maxprice = document.getElementById("max").value;
-    if(minprice > maxprice)
+function updateTable(cars)
+{
+    for(let i = 0; i < 10; i++)
     {
-        minprice = maxprice;
+        if(i < cars.length)
+        {
+            updateCarDetails(1, cars[0]);
+        }
+        else
+        {
+            updateCarDetails(0, null);
+        }
     }
-    if(maxprice < minprice)
-    {
-        maxprice = minprice;
+}
+
+function updateCarDetails(carNumber, car) {
+    // Find the row corresponding to the car number
+    const carRow = document.querySelector(`.carRow[data-car-number="${carNumber}"]`);
+    if (carRow) {
+        // Update the specific cells within the row
+        carRow.querySelector('.year').textContent = car.Year;
+        carRow.querySelector('.make').textContent = car.Make;
+        carRow.querySelector('.model').textContent = car.Model;
+        //carRow.querySelector('.condition').textContent = car.'Used/New';
+        carRow.querySelector('.price').textContent = '$' + car.Price;
+        carRow.querySelector('.seller').textContent = car.SellerName;
+        carRow.querySelector('.rating').textContent = car.SellerRating;
+        carRow.querySelector('.street').textContent = car.StreetName;
+        carRow.querySelector('.state').textContent = car.State;
+        carRow.querySelector('.color').textContent = car.ExteriorColor;
+        carRow.querySelector('.minMPG').textContent = car.MinMPG;
+        carRow.querySelector('.maxMPG').textContent = car.MaxMPG;
+        carRow.querySelector('.fuel').textContent = car.FuelType;
+        carRow.querySelector('.mileage').textContent = car.Mileage;
+    } else {
+        console.error(`Car with number ${carNumber} not found.`);
     }
-    mpg = document.getElementById("mpg").value;
-    electric = document.getElementById("Electric").checked;
-    gas = document.getElementById("Gas").checked;
-    hybrid = document.getElementById("Hybrid").checked;
-    brand = document.getElementById("dropdownButton").textContent;
-    red = document.getElementById("Red").checked;
-    black = document.getElementById("Black").checked;
-    white = document.getElementById("White").checked;
-    grey = document.getElementById("Grey").checked;
-    brown = document.getElementById("Brown").checked;
-    if(electric||gas||hybrid)
-    {
-        if(electric)
-            fuelTypes.push("Electric");
-        if(gas)
-            fuelTypes.push("Gas");
-        if(hybrid)
-            fuelTypes.push("Hybrid");
-    }
-    if(red||black||white||grey||brown)
-    {
-        if(red)
-            colors.push("Red");
-        if(black)
-            colors.push("Black");
-        if(white)
-            colors.push("White");
-        if(grey)
-            colors.push("Gray");
-        if(brown)
-            colors.push("Brown");
-    }
-} 
+}
 
-console.log(minprice);
-console.log(maxprice);
-console.log(mpg);
-console.log(colors);
-console.log(fuelTypes);
-console.log(brand);
-
-// function displayCarInfo(cars) {
-//     const carInfoDiv = document.getElementById('carInfo');
-//     carInfoDiv.innerHTML = '';
-    
-//     cars.forEach(car => {
-//         let carDetails = '';
-//         for (const key in car) {
-//             carDetails += `<p><strong>${key}:</strong> ${car[key]}</p>`;
-//         }
-//         carInfoDiv.innerHTML += `<div>${carDetails}</div><hr>`;
-//     });
-// }
-
-// fetchCarData();
-
-// Call the fetchCarData function when the page is loaded
-window.onload = function() {
-    fetchCarData();
-};
-
-/*
-const excelUrl = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/main/filtereddata.xlsx';
-
-// const XLSX = require("xlsx");
-// const fs = require("fs");
-// const workbook = XLSX.readFile("./filtereddata.xlsx");
-const YEAR_INDEX = 0;
-const BRAND_INDEX = 1;
-const MODEL_INDEX = 2;
-const CONDITION_INDEX = 3;
-const PRICE_INDEX = 4;
-const SELLER_NAME_INDEX = 5;
-const SELLER_RATING_INDEX = 6;
-const STREET_INDEX = 7;
-const STATE_INDEX = 8;
-const COLOR_INDEX = 9;
-const MIN_MPG_INDEX = 10;
-const MAX_MPG_INDEX = 11;
-const FUEL_INDEX = 12;
-const MILEAGE_INDEX = 13;
-console.log("Hello");
-
-const submitButton = document.querySelector("button");
+const submitButton = document.getElementById("nextButton");
 submitButton.addEventListener("click", generateValues);
-
-// const sheet = workbook.Sheets[workbook.SheetNames[0]];
-// const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-let excelData;
-
-fetch(excelUrl)
-  .then((response) => response.arrayBuffer())
-  .then((data) => {
-    // Read the Excel file
-    const workbook = XLSX.read(new Uint8Array(data), { type: "array" });
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-
-    // Convert to a 2D array
-    excelData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-    console.log("Excel Data:", excelData);
-
-    // Process the form inputs
-  });
-
-let minprice, maxprice, mpg, electric, gas, hybrid, brand, red, black, white, grey, brown;
-let colors, fuelTypes = [];
-
-console.log(excelData[1]);
-
-function generateValues(event) {
-    console.log("Hello");
-    event.preventDefault()
-    minprice = document.getElementById("min").value;
-    maxprice = document.getElementById("max").value;
-    if(minprice > maxprice)
-    {
-        minprice = maxprice;
-    }
-    if(maxprice < minprice)
-    {
-        maxprice = minprice;
-    }
-    mpg = document.getElementById("mpg").value;
-    electric = document.getElementById("Electric").checked;
-    gas = document.getElementById("Gas").checked;
-    hybrid = document.getElementById("Hybrid").checked;
-    brand = document.getElementById("dropdownButton").textContent;
-    red = document.getElementById("Red").checked;
-    black = document.getElementById("Black").checked;
-    white = document.getElementById("White").checked;
-    grey = document.getElementById("Grey").checked;
-    brown = document.getElementById("Brown").checked;
+function generateValues() {
+    const minprice = document.getElementById("min").value;
+    const maxprice = document.getElementById("max").value;
+    const mpg = document.getElementById("mpg").value;
+    const electric = document.getElementById("Electric").checked;
+    const gas = document.getElementById("Gas").checked;
+    const hybrid = document.getElementById("Hybrid").checked;
+    const brand = document.getElementById("dropdownButton").textContent;
+    const red = document.getElementById("Red").checked;
+    const black = document.getElementById("Black").checked;
+    const white = document.getElementById("White").checked;
+    const grey = document.getElementById("Grey").checked;
+    const brown = document.getElementById("Brown").checked;
+    let colors = [];
+    let fuelTypes = [];
     if(electric||gas||hybrid)
     {
         if(electric)
             fuelTypes.push("Electric");
         if(gas)
-            fuelTypes.push("Gas");
+            fuelTypes.push("Gasoline");
         if(hybrid)
             fuelTypes.push("Hybrid");
     }
@@ -266,15 +173,6 @@ function generateValues(event) {
         if(brown)
             colors.push("Brown");
     }
-} 
 
-console.log(minprice);
-console.log(maxprice);
-console.log(mpg);
-console.log(colors);
-console.log(fuelTypes);
-console.log(brand);
-
-
-
-// console.log(findCars(19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));*/
+    fetchCarData(minprice, maxprice, mpg, brand, colors, fuelTypes)
+}
