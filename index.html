@@ -15,7 +15,7 @@
             <p1 class="text">Minimum Price:&nbsp;$<span id="minprice">30000</span></p1>
             </div>
             <div class="container">
-            <input id="min" type="range" min="5000" max="120000" value="30000" oninput="minprice.innerText = this.value">
+            <input id="min" type="range" min="5000" max="130000" value="30000" oninput="minprice.innerText = this.value">
             </div>
         <br>
 
@@ -23,7 +23,7 @@
             <p1 class="text">Maximum Price:&nbsp;$<span id="maxprice">30000</span> </p1>
             </div>
             <div class="container">
-            <input id="max" type="range" min="5000" max="120000" value="30000" oninput="maxprice.innerText = this.value">
+            <input id="max" type="range" min="5000" max="130000" value="30000" oninput="maxprice.innerText = this.value">
             <br>
             </div>
             <br>
@@ -35,7 +35,7 @@
         <div class="background">
         <br>
         <div class="container">
-        <p1 class="text">Miles Per Gallon:&nbsp;<span id="miles">30</span></p1>
+        <p1 class="text">Minimum Miles Per Gallon:&nbsp;<span id="miles">30</span></p1>
         </div>
         
         <div class="container">
@@ -50,7 +50,7 @@
         <div class="background">
         <br>
         <div class="container">
-        <p1 class="text" id="Type">Fuel Type</p1>
+        <p1 class="menuText" id="Type">Fuel Type</p1>
         </div>
         <br>
         <div class="container">
@@ -71,7 +71,7 @@
         <div class="background">
         <br>
         <div class="container">
-            <p1 class="text">Colors:</p1>
+            <p1 class="menuText">Colors:</p1>
         </div>
         <br>
         <div class="container">
@@ -93,49 +93,50 @@
         <div class="background">
         <br>
             <div class="container">
-            <p1 class="text">Brand</p1>
+            <p1 class="menuText">Brand</p1>
             </div>
         <br>
         <div class="container">
         <div class="dropdown">
-            <button id="dropdownButton" onclick="myfunction()" class="dropbtn" style="color: rgb(113, 21, 0)">select</button>
+            <button id="dropdownButton" onclick="myfunction()" class="dropbtn">Select</button>
             <div id="myDropdown" class="dropdown-content">
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('Acura')">Acura</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('Audi')">Audi</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('BMW')">BMW</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('Buick')">Buick</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('Chevrolet')">Chevrolet</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('FIAT')">FIAT</a>
-                <a style="color: rgb(113, 21, 0)" href="#" onclick="selectOption('Ford')">Ford</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('GMC')">GMC</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Honda')">Honda</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Hyundai')">Hyundai</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Kia')">Kia</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Lexus')">Lexus</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Lincoln')">Lincoln</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Mazda')">Mazda</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Mercedes-Benz')">Mercedes-Benz</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Mercury')">Mercury</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('MINI')">MINI</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Mitsubishi')">Mitsubishi</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Nissan')">Nissan</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Porsche')">Porsche</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Scion')">Scion</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Subaru')">Subaru</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Tesla')">Tesla</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Toyota')">Toyota</a>
-                <a style="color: rgb(113, 21, 0)" class="value" href="#" onclick="selectOption('Volkswagen')">Volkswagen</a>
+                <a style="color: white" href="#" onclick="selectOption('Acura')">Acura</a>
+                <a style="color: white" href="#" onclick="selectOption('Audi')">Audi</a>
+                <a style="color: white" href="#" onclick="selectOption('BMW')">BMW</a>
+                <a style="color: white" href="#" onclick="selectOption('Buick')">Buick</a>
+                <a style="color: white" href="#" onclick="selectOption('Chevrolet')">Chevrolet</a>
+                <a style="color: white" href="#" onclick="selectOption('FIAT')">FIAT</a>
+                <a style="color: white" href="#" onclick="selectOption('Ford')">Ford</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('GMC')">GMC</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Honda')">Honda</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Hyundai')">Hyundai</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Kia')">Kia</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Lexus')">Lexus</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Lincoln')">Lincoln</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Mazda')">Mazda</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Mercedes-Benz')">Mercedes-Benz</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Mercury')">Mercury</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('MINI')">MINI</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Mitsubishi')">Mitsubishi</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Nissan')">Nissan</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Porsche')">Porsche</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Scion')">Scion</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Subaru')">Subaru</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Tesla')">Tesla</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Toyota')">Toyota</a>
+                <a style="color: white" class="value" href="#" onclick="selectOption('Volkswagen')">Volkswagen</a>
             </div>
             </div>
         </div>
         <br>
         </div>
         
-        <br><br><br>
+        <br><br><br><br><br><br><br><br><br>
        
         <div class="container">
         <button id="nextButton">Submit</button>
         </div>
+        <br><br><br><br><br>
         <div class="container">
         <h1>Our Top 10 Picks</h1>
         </div>
@@ -144,21 +145,21 @@
        
         <table class="background">
             <tr>
-                <th class="text">Car Number</th>
-                <th class="text">Year</th>
-                <th class="text">Brand</th>
-                <th class="text">Model</th>
-                <th class="text">Condition</th>
-                <th class="text">Price</th>
-                <th class="text">Seller Name</th>
-                <th class="text">Seller Rating</th>
-                <th class="text">Street Name</th>
-                <th class="text">State</th>
-                <th class="text">Color</th>
-                <th class="text">Minimum MPG</th>
-                <th class="text">Maxmimum MPG</th>
-                <th class="text">Fuel Type</th>
-                <th class="text">Milage</th>
+                <th class="tableText">Car Number</th>
+                <th class="tableText">Year</th>
+                <th class="tableText">Brand</th>
+                <th class="tableText">Model</th>
+                <th class="tableText">Condition</th>
+                <th class="tableText">Price</th>
+                <th class="tableText">Seller Name</th>
+                <th class="tableText">Seller Rating</th>
+                <th class="tableText">Street Name</th>
+                <th class="tableText">State</th>
+                <th class="tableText">Color</th>
+                <th class="tableText">Minimum MPG</th>
+                <th class="tableText">Maxmimum MPG</th>
+                <th class="tableText">Fuel Type</th>
+                <th class="tableText">Milage</th>
             </tr>
             <tr class="carRow" data-car-number="1">
                 <th class="carNumber value" >1</th>
@@ -338,6 +339,7 @@
             *NOTE: NA means there was no more applicable cars that meets your specifications
         </p1>><br>
     </div><br><br>
+
         <script type="text/javascript" src="script.js"></script>
     </body>
 </html>

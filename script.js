@@ -16,10 +16,10 @@ async function fetchCarData(minprice, maxprice, mpg, brand, colors, fuelTypes) {
     }
 }
 
-// Function to parse the CSV data into an array of car objects
+
 function parseCSV(csvData) {
     const rows = csvData.split('\n');
-    const headers = rows[0].split(',');  // Assuming first row contains headers
+    const headers = rows[0].split(',');
     const cars = [];
     
     for (let i = 1; i < rows.length; i++) {
@@ -77,7 +77,7 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     {
         for(let i = 0; i < fuelTypes.length; i++)
         {
-            if(car.FuelType == fuelTypes[i])
+            if(car.FuelType.includes(fuelTypes[i]))
             {
                 correctFuelType = true;
                 break;
@@ -96,7 +96,21 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
 }
 
 function updateTable(cars)
-{           
+{   
+    // puts cars with highest minimum miles per gallon at the top of the list
+    cars.sort((a, b) => b.MinMPG - a.MinMPG);
+
+    // puts electric cars higher than other cars at the top of the list
+    cars.sort((a, b) => {
+        if (a.FuelType === "electric" && b.FuelType !== "electric") {
+          return -1; 
+        } else if (b.FuelType === "electric" && a.FuelType !== "electric") {
+          return 1;
+        } else {
+          return 0;
+        }
+    });
+
     for(let i = 0; i < 10; i++)
     {
         if(i < cars.length)
@@ -111,7 +125,6 @@ function updateTable(cars)
 }
 
 function updateCarDetails(carNumber, car) {
-    // Find the row corresponding to the car number
     if(car == null)
     {
         clearCarDetails(carNumber);
@@ -120,7 +133,6 @@ function updateCarDetails(carNumber, car) {
 
     const carRow = document.querySelector(`.carRow[data-car-number="${carNumber}"]`);
     if (carRow) {
-        // Update the specific cells within the row
         carRow.querySelector('.year').textContent = car.Year;
         carRow.querySelector('.make').textContent = car.Make;
         carRow.querySelector('.model').textContent = car.Model;
@@ -144,7 +156,6 @@ function clearCarDetails(carNumber)
 {
     const carRow = document.querySelector(`.carRow[data-car-number="${carNumber}"]`);
     if (carRow) {
-        // Update the specific cells within the row
         carRow.querySelector('.year').textContent = 'NA';
         carRow.querySelector('.make').textContent = 'NA';
         carRow.querySelector('.model').textContent = 'NA';
@@ -214,13 +225,14 @@ function generateValues() {
 }
 
 function selectOption(option) {
+    event.preventDefault();
     const dropdownButton = document.getElementById("dropdownButton");
-    dropdownButton.textContent = option; // Update the button text to selected option
-    document.getElementById("myDropdown").classList.remove("show"); // Close dropdown after selection
+    dropdownButton.textContent = option; 
+    document.getElementById("myDropdown").classList.remove("show");
 }
 
-// Function to show the dropdown menu
-    function myfunction() {
+    function myfunction(event) {
+    event.preventDefault()
     const dropdownContent = document.getElementById("myDropdown");
-    dropdownContent.classList.toggle("show"); // Toggle visibility of dropdown
+    dropdownContent.classList.toggle("show");
 }
