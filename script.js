@@ -1,5 +1,5 @@
 async function fetchCarData() {
-    const url = 'https://raw.githubusercontent.com/username/repository-name/main/data/cars.csv';
+    const url = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/refs/heads/main/filtereddata5.csv';
     
     try {
         const response = await fetch(url);
@@ -34,8 +34,25 @@ function parseCSV(csvData) {
     return cars;
 }
 
+function displayCarInfo(cars) {
+    const carInfoDiv = document.getElementById('carInfo');
+    carInfoDiv.innerHTML = '';
+    
+    cars.forEach(car => {
+        let carDetails = '';
+        for (const key in car) {
+            carDetails += `<p><strong>${key}:</strong> ${car[key]}</p>`;
+        }
+        carInfoDiv.innerHTML += `<div>${carDetails}</div><hr>`;
+    });
+}
 
+// Call the fetchCarData function when the page is loaded
+window.onload = function() {
+    fetchCarData();
+};
 
+/*
 const excelUrl = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/main/filtereddata.xlsx';
 
 // const XLSX = require("xlsx");
@@ -199,4 +216,4 @@ function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
     }
 }
 
-console.log(findCars(19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));
+console.log(findCars(19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));*/
