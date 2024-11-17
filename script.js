@@ -8,7 +8,7 @@ async function fetchCarData() {
         }
         const csvData = await response.text();
         const cars = parseCSV(csvData);
-        console.log(cars);
+        console.log(findCars(cars, 19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));
     } catch (error) {
         console.error('Error:', error);
     }
@@ -32,6 +32,66 @@ function parseCSV(csvData) {
     }
     
     return cars;
+}
+
+function findCars(cars, minprice, maxprice, mpg, brand, colors, fuelTypes) {
+    let correctCars = [];
+    for(let car = 0; car < cars.length; car++)
+    {
+        if(carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes))
+        {
+            correctCars.push(car);
+        }
+    }
+
+    return correctCars;
+}
+
+function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
+{
+    let containsColor = false;
+    if(colors.length < 1)
+    {
+        containsColor = true;
+    }
+    else
+    {
+        for(let i = 0; i < colors.length; i++)
+        {
+            if(car.ExteriorColor.includes(colors[i]))
+            {
+                containsColor = true;
+                break;
+            }
+        }
+    }
+    
+    let correctFuelType = false;
+    if(fuelTypes.length < 1)
+    {
+        correctFuelType = true;
+    }
+    else
+    {
+        for(let i = 0; i < fuelTypes.length; i++)
+        {
+            if(car.FuelType == fuelTypes[i])
+            {
+                correctFuelType = true;
+                break;
+            }
+        }
+    }
+
+    if(car.Price >= minprice && car.Price <= maxprice && car.MinMPG >= mpg && car.Make == brand && containsColor && correctFuelType)
+    {
+        console.log("started1");
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // function displayCarInfo(cars) {
@@ -156,64 +216,6 @@ console.log(colors);
 console.log(fuelTypes);
 console.log(brand);
 
-function findCars(minprice, maxprice, mpg, brand, colors, fuelTypes) {
-    let correctCars = [];
-    for(let r = 1; r < excelData.length; r++)
-    {
-        if(carMatches(excelData[r], minprice, maxprice, mpg, brand, colors, fuelTypes))
-        {
-            correctCars.push(excelData[r]);
-        }
-    }
 
-    return correctCars;
-}
 
-function carMatches(car, minprice, maxprice, mpg, brand, colors, fuelTypes)
-{
-    let containsColor = false;
-    if(colors.length < 1)
-    {
-        containsColor = true;
-    }
-    else
-    {
-        for(let i = 0; i < colors.length; i++)
-        {
-            if(car[COLOR_INDEX].includes(colors[i]))
-            {
-                containsColor = true;
-                break;
-            }
-        }
-    }
-    
-    let correctFuelType = false;
-    if(fuelTypes.length < 1)
-    {
-        correctFuelType = true;
-    }
-    else
-    {
-        for(let i = 0; i < fuelTypes.length; i++)
-        {
-            if(car[FUEL_INDEX] == fuelTypes[i])
-            {
-                correctFuelType = true;
-                break;
-            }
-        }
-    }
-
-    if(car[PRICE_INDEX] >= minprice && car[PRICE_INDEX] <= maxprice && car[MIN_MPG_INDEX] >= mpg && car[BRAND_INDEX] == brand && containsColor && correctFuelType)
-    {
-        console.log("started1");
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-console.log(findCars(19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));*/
+// console.log(findCars(19000, 21000, 24, "Honda", [], ["Gasoline", "Electric"]));*/
