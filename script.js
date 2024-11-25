@@ -1,5 +1,4 @@
 async function fetchCarData(minprice, maxprice, mpg, brand, colors, fuelTypes) {
-    // const url = 'https://raw.githubusercontent.com/andrewvattuone/AWS-2024-Hackathon-Car-Search-Site/refs/heads/main/filteredcardata.csv';
     const url = 'https://raw.githubusercontent.com/andrewvattuone/AWS-INRIX-2024-Hackathon-Eco-Car-Finder/refs/heads/main/filteredcardata.csv';
     try {
         const response = await fetch(url);
